@@ -8,6 +8,7 @@ def onSetupParameters(scriptOp):
 	p = page.appendFloat('Valuea', label='Value A')
 	p = page.appendFloat('Valueb', label='Value B')
 	return
+	
 This function defines the behavior when the "Setup Parameters" button is pressed. It adds a custom page to the operator's parameters with two float parameters called "Valuea" and "Valueb".
 
 # called whenever custom pulse parameter is pushed
@@ -49,17 +50,22 @@ Overall, this script generates a grid of lines at random angles that change each
 //Japanese
 
 これは、カスタムTouchDesignerオペレーターの動作を定義するPythonスクリプトです。オペレーターは、ランダムな角度でグリッチアートのような効果を生成するグリッド線を生成します。以下にコードの詳細を示します。
+
 # press 'Setup Parameters' in the OP to call this function to re-create the parameters
 def onSetupParameters(scriptOp):
     page = scriptOp.appendCustomPage('Custom')
     p = page.appendFloat('Valuea', label='Value A')
     p = page.appendFloat('Valueb', label='Value B')
     return
+    
 この関数は、「Setup Parameters」ボタンが押されたときの動作を定義します。カスタムページをオペレーターのパラメータに追加し、「Valuea」と「Valueb」という2つの浮動小数点パラメータを作成します。
+
 # called whenever custom pulse parameter is pushed
 def onPulse(par):
     return
+    
 この関数は、カスタムパルスパラメータが押されたときに呼び出されます。ただし、この場合は何もしません。
+
 def line(sop,x1,y1,x2,y2):
     poly = sop.appendPoly(2,addPoints=True,closed=False)
     
@@ -70,6 +76,7 @@ def line(sop,x1,y1,x2,y2):
     poly[1].point.y = y2
 
 この関数は、2つの点間に線を作成し、提供されたSOP（surface operator）に追加します。2つのポイントを持つポリプリミティブを作成し、その座標を(x1、y1)と(x2、y2)に設定します。
+
 import random
 
 def onCook(scriptOp):
